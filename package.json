@@ -1,0 +1,31 @@
+{
+  "name": "express-redirect-to-www",
+  "version": "0.0.0",
+  "description": "Express middleware for redirecting \"non-www\" requests to \"www\" url path",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webextensions/express-redirect-to-www.git"
+  },
+  "keywords": [
+    "express",
+    "middleware",
+    "redirect",
+    "non-www",
+    "request",
+    "url",
+    "www"
+  ],
+  "author": "Priyank Parashar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/webextensions/express-redirect-to-www/issues"
+  },
+  "homepage": "https://github.com/webextensions/express-redirect-to-www#readme",
+  "devDependencies": {
+    "mocha": "^3.4.2"
+  }
+}
