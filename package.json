@@ -1,6 +1,6 @@
 {
   "name": "express-redirect-to-www",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Express middleware for redirecting \"non-www\" requests to \"www\" url path",
   "main": "index.js",
   "scripts": {
