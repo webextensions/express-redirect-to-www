@@ -20,7 +20,7 @@ var redirectToWww = function (redirectStatusCode) {
             console.error(e);
             console.error(
                 `Error: Error caught in express-redirect-to-https.` +
-                ` req.headers = ${req.headers} ;` +
+                ` req.headers = ${JSON.stringify(req.headers)} ;` +
                 ` req.host = ${req.host} ;` +
                 ` req.hostname = ${req.hostname} ;` +
                 ` req.method = ${req.method} ;` +
@@ -29,7 +29,7 @@ var redirectToWww = function (redirectStatusCode) {
                 ` req.protocol = ${req.protocol} ;` +
                 ` req.subdomains = ${req.subdomains} ;` +
                 ` req.url = ${req.url} ;` +
-                ` req._parsedUrl = ${req._parsedUrl} ;`
+                ` req._parsedUrl = ${JSON.stringify(req._parsedUrl)} ;`
             );
 
             throw e;
