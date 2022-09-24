@@ -1,4 +1,4 @@
-var redirectToWww = function (redirectStatusCode) {
+var redirectToWww = function (redirectStatusCode, skipFn) {
     if (typeof redirectStatusCode === 'number' && redirectStatusCode >= 300 && redirectStatusCode <= 399) {
         // do nothing
     } else {
@@ -6,6 +6,10 @@ var redirectToWww = function (redirectStatusCode) {
     }
     return function (req, res, next) {
         try {
+            if (typeof skipFn === 'function' && skipFn(req)) {
+                return next();
+            }
+
             if (
                 typeof req.get('host') === 'string' &&
                 typeof req.hostname === 'string'
@@ -19,14 +23,14 @@ var redirectToWww = function (redirectStatusCode) {
                     var redirectToUrl = req.protocol + '://' + 'www.' + host + req.originalUrl;
                     return res.redirect(redirectStatusCode, redirectToUrl);
                 }
-                next();
+                return next();
             } else { // To reach this "else" condition, try something like: curl -H "host:" 127.0.0.1
                 return res.status(400).send('400 Bad Request - Please access the "www." version of this website.\n');
             }
         } catch (e) {
             console.error(e);
             console.error(
-                `Error: Error caught in express-redirect-to-https.` +
+                `Error: Error caught in express-redirect-to-www.` +
                 ` req.headers = ${JSON.stringify(req.headers)} ;` +
                 ` req.get('host') = ${req.get('host')} ;` +
                 ` req.host = ${req.host} ;` +
